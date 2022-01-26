@@ -2,8 +2,9 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {AppBar, Toolbar, IconButton, Typography, Tooltip, colors} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
-import {useDispatch} from "react-redux";
-import {ACTIONS} from "../../../redux-store/popups/actions";
+import {openNewCardPopup} from "../../../methods/popups/open-new-card-popup";
+import {setUserAndAddress} from "../../../methods/popups/set-user-and-address";
+import {resetUser} from "../../../methods/aux/reset-user";
 
 const useStyles = makeStyles((theme) => ({
 	greenButton: {
@@ -18,17 +19,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Header = (props) => {
-
-	const dispatch = useDispatch();
-
-	const openPopup = () => {
-		dispatch({
-			type: ACTIONS.OPEN_NEW_CARD_POPUP,
-		});
-	}
+const AddressPageHeader = (props) => {
 
 	const classes = useStyles();
+
+	const handleNewUserWithAddress = () => {
+		resetUser();
+		setUserAndAddress();
+		openNewCardPopup();
+	}
 
 	return <AppBar color={"primary"} position="static" style={{marginBottom: 32}}>
 		<Toolbar style={{justifyContent: 'space-between'}}>
@@ -36,7 +35,7 @@ const Header = (props) => {
 				Insta Map
 			</Typography>
 			<Tooltip title="Add New Card" placement="left">
-				<IconButton onClick={openPopup} size={"medium"} className={classes.greenButton} aria-label="menu">
+				<IconButton onClick={handleNewUserWithAddress} size={"medium"} className={classes.greenButton} aria-label="menu">
 					<AddIcon fontSize={"small"} />
 				</IconButton>
 			</Tooltip>
@@ -44,4 +43,4 @@ const Header = (props) => {
 	</AppBar>
 }
 
-export default Header;
+export default AddressPageHeader;

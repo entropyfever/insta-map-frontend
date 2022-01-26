@@ -1,0 +1,4 @@
+export const ACTIONS = {
+	ADD_MARKER: "ADD_MARKER",
+	DELETE_MARKER: "DELETE_MARKER",
+};

@@ -1,13 +1,16 @@
 import {combineReducers} from "redux";
-import userReducer from "./reducers/userReducer";
-import counterReducer from  "./reducers/counterReducer";
-import {reducer as toastrReducer} from 'react-redux-toastr'
-
+import cardsReducer from "./cards/reducer";
+import popupsReducer from  "./popups/reducer";
+import auxReducer from  "./aux/reducer";
+import mapReducer from  "./map/reducer";
+import markersReducer from  "./markers/reducer";
 
 export const rootReducer = combineReducers({
-	toastr: toastrReducer,
-	user: userReducer,
-	counter: counterReducer,
+	cards: cardsReducer,
+	popups: popupsReducer,
+	aux: auxReducer,
+	map: mapReducer,
+	markers: markersReducer,
 });
 
 
